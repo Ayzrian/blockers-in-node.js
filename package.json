@@ -4,7 +4,10 @@
   "description": "This repository contains code for medium article https://medium.com/@ayzrian/1966d0399703",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start:blocker": "node ./src/blocker.js",
+    "start:partition": "node ./src/partition.js.js",
+    "start:offloading": "node ./src/offloading.js.js",
+    "start:caching": "node ./src/caching.js.js"
   },
   "repository": {
     "type": "git",
