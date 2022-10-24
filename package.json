@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start:blocker": "node ./src/blocker.js",
-    "start:partition": "node ./src/partition.js.js",
-    "start:offloading": "node ./src/offloading.js.js",
-    "start:caching": "node ./src/caching.js.js"
+    "start:partition": "node ./src/partition.js",
+    "start:offloading": "node ./src/offloading.js",
+    "start:caching": "node ./src/caching.js"
   },
   "repository": {
     "type": "git",
