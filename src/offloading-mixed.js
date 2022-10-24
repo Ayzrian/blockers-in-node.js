@@ -16,11 +16,18 @@ function getSum(n) {
 }
 
 const server = http.createServer(async (req, res) => {
-    pool.exec(getSum, [1000000000])
-        .then((number) => {
-            res.write(String(number));
+    if (req.url === '/blocker') {
+        pool.exec(getSum, [1000000000])
+            .then((number) => {
+                res.write(String(number));
+                res.end();
+            })
+    } else {
+        setTimeout(() => {
+            res.write('000001');
             res.end();
-        })
+        }, 200)
+    }
 });
 
 server.listen(3000);

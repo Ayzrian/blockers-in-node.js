@@ -20,21 +20,28 @@ function getSum(n) {
 const cache = new Map();
 
 const server = http.createServer(async (req, res) => {
-    const n = getRandomN(1000000000, 1000001000);
+    if (req.url === '/blocker') {
+        const n = getRandomN(1000000000, 1000001000);
 
-    if (cache.has(n)) {
-        res.write(cache.get(n));
-        res.end();
-        return;
-    }
-
-    pool.exec(getSum, [n])
-        .then((number) => {
-            const result = String(number);
-            cache.set(n, result);
-            res.write(result);
+        if (cache.has(n)) {
+            res.write(cache.get(n));
             res.end();
-        })
+            return;
+        }
+
+        pool.exec(getSum, [n])
+            .then((number) => {
+                const result = String(number);
+                cache.set(n, result);
+                res.write(result);
+                res.end();
+            })
+    } else {
+        setTimeout(() => {
+            res.write('000001');
+            res.end();
+        }, 200)
+    }
 });
 
 server.listen(3000);
